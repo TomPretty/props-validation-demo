@@ -1,7 +1,7 @@
 import * as z from "zod";
 import { withParsedProps } from "../hocs/withParsedProps";
 
-interface EpicProps {
+export interface EpicProps {
   articleCount: number;
   sendComponentEvent?: () => void;
 }
@@ -30,4 +30,4 @@ const validate = (props: unknown): props is EpicProps => {
 
 const wrapped = withParsedProps(Epic, validate);
 
-export { wrapped as Epic };
+export { wrapped as Epic, Epic as EpicUnwrapped };
