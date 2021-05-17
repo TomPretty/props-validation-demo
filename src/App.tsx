@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Epic } from "./components/Epic";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Prop validation</h1>
+
+      <div>
+        <h2>With valid props</h2>
+        <Epic
+          // @ts-ignore
+          articleCount={42}
+          sendComponentEvent={() => console.log("event!")}
+        />
+      </div>
+
+      <div>
+        <h2>With invalid props</h2>
+        <Epic
+          // @ts-ignore
+          articleCount={{ num: 42, durationInMonths: 6 }}
+          sendComponentEvent={() => console.log("event!")}
+        />
+      </div>
     </div>
   );
 }
